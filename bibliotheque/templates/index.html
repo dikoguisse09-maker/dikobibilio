@@ -6,6 +6,30 @@
 </head>
 <body>
     <h1>Bonjour !</h1>
-    <p>Bienvenue sur ma page HTML toute simple.</p>
+<table border="1">
+    <tr>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>actions</th>
+    </tr>
+    {%for a in person %}
+    <tr>
+        <td>{{a.nom}}</td>
+        <td>{{a.prenom}}</td>
+        <td>
+            <a href="{% url 'modefier_auteur' auteur.id%}">modifier</a>
+            <a href="{% url 'supprimer_auteur ' auteur.id%}">supprimer</a>
+        </td>
+    </tr>
+    {%endfor%} 
+</table>
+
+   
+<p>je mappelle {{person.prenom}} {{person.nom}} et je suis de nationalite {{person.nationalite}}</p>
+     
+  
+
+    
+  
 </body>
 </html>
