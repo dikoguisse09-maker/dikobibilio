@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ma Page</title>
-</head>
-<body>
-    <h1>Bonjour !</h1>
-<table border="1">
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
     <tr>
-        <th>nom</th>
-        <th>prenom</th>
-        <th>actions</th>
+      <th scope="#id">#</th>
+      <th scope="prenom">First</th>
+      <th scope="nom">Last</th>
+      <th scope="nationalite">Handle</th>
     </tr>
-    {%for a in person %}
+  </thead>
+  <tbody>
+  {%for a in person %}
     <tr>
-        <td>{{a.nom}}</td>
-        <td>{{a.prenom}}</td>
-        <td>
-            <a href="{% url 'modefier_auteur' auteur.id%}">modifier</a>
-            <a href="{% url 'supprimer_auteur ' auteur.id%}">supprimer</a>
-        </td>
+      <th scope="row">{{a.id}}</th>
+      <td>{{a.prenom}}</td>
+      <td>{{a.nom}}</td>
+      <td>{{a.nationalite}}</td>
     </tr>
     {%endfor%} 
+  </tbody>
 </table>
 
-   
-<p>je mappelle {{person.prenom}} {{person.nom}} et je suis de nationalite {{person.nationalite}}</p>
-     
-  
-
-    
-  
-</body>
-</html>
+{% endblock content %}  

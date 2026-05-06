@@ -31,4 +31,19 @@ def ajouter_auteur(request):
 def about(request):
     return render(request, 'about.html')
 
+def modifier_auteur(request):
+    if request.method == 'POST':
+        form = AuteurForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request,'index.html')
+    else:
+        form = form = AuteurForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'modifier_auteur.html', context)
+
+
 
