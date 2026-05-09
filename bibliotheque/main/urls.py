@@ -3,8 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home),
+    path('', views.home,name="index"),
     path('about',views.about),
     path('ajouter_auteur',views.ajouter_auteur,name="ajouter"),
     path('modifier_auteur',views.modifier_auteur,name="modifier_auteur"),
+    path('login',views.connexion,name="login"),
 ]
