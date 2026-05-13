@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import Auteur
-from .forms import AuteurForm
-from django.contrib.auth import authenticate,login
+from .forms import AuteurForm, livreForm
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 
@@ -51,6 +51,22 @@ def ajouter_auteur(request):
     return render(request, 'ajouter_auteur.html', context)
 
 
+def ajouter_livre(request):
+    if request.method == 'POST':
+        form = livreForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return render(request,'index.html')
+    else:
+        form = form = livreForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'ajouter_livre.html', context)
+
+
+
 def about(request):
     return render(request, 'about.html')
 
@@ -68,5 +84,7 @@ def modifier_auteur(request):
     }
     return render(request, 'modifier_auteur.html', context)
 
-
+def deconnexion(request):
+    logout(request)
+    return redirect ('login')
 

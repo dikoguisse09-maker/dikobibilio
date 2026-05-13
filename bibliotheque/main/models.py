@@ -6,7 +6,7 @@ class Auteur(models.Model):
     nationalite = models.CharField(max_length=50)
 
    
-class Livre(models.Model):
+class livre(models.Model):
 
     titre = models.CharField(max_length=200)
     auteur = models.ForeignKey(Auteur, on_delete=models.CASCADE)

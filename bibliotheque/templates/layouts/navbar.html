@@ -27,10 +27,14 @@
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+        {% if user.is_authenticated%}
+        {{request.user.username}}
+        <a href="{% url 'deconnexion'%}" class="btn btn-outline-danger">deconnexion<a/>
+        {%else%}
+        <button class="btn btn-outline-success" type="submit">connexion</button>
+        {%endif%}
+      
     </div>
   </div>
 </nav>
