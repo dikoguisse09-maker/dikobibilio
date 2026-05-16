@@ -5,10 +5,11 @@ class AuteurForm(forms.ModelForm):
     
     class Meta:
         model = Auteur
-        fields = ['nom', 'prenom']
+        fields = ['nom', 'prenom', 'nationalite']  
         widgets = {
             'nom': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom de l\'auteur'}),
             'prenom': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Prénom de l\'auteur'}),
+            'nationalite': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nationalité de l\'auteur'}),  # ✅
         }
 
 class livreForm(forms.ModelForm):

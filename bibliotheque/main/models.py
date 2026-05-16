@@ -5,6 +5,8 @@ class Auteur(models.Model):
     prenom = models.CharField(max_length=100)
     nationalite = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.prenom} {self.nom}"  # ← c'est ça qui remplace les "----------"
    
 class livre(models.Model):
 

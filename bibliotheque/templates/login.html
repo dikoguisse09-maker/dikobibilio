@@ -1,26 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-{{erreur}}
+{% block content %}
+
+<div style="min-height:70vh; display:flex; align-items:center; justify-content:center;">
+  <div style="width:100%; max-width:400px; background:#fff; border:1px solid #e5e5e5; border-radius:16px; padding:2rem;">
+    
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div style="width:48px; height:48px; border-radius:50%; background:#EEEDFE; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;">
+        <span style="font-size:22px;">📚</span>
+      </div>
+      <h1 style="font-size:20px; font-weight:600; margin:0 0 4px;">Bibliothèque</h1>
+      <p style="font-size:14px; color:#888; margin:0;">Connectez-vous à votre compte</p>
+    </div>
+
+    {% if erreur %}
+    <div style="background:#FEF2F2; border:1px solid #FECACA; color:#991B1B; font-size:13px; padding:10px 14px; border-radius:8px; margin-bottom:1.5rem;">
+      ⚠️ {{ erreur }}
+    </div>
+    {% endif %}
+
     <form method="POST">
-        {% csrf_token %}
+      {% csrf_token %}
 
-        <div>
-            <label  for="">username</label>
-            <input type="text" name="username">
-        </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:13px; font-weight:500; color:#444; margin-bottom:6px;">Nom d'utilisateur</label>
+        <input type="text" name="username" placeholder="Entrez votre nom d'utilisateur"
+          style="width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:14px; box-sizing:border-box; outline:none;">
+      </div>
 
-        <div>
-            <label for="">password</label>
-            <input type="password" name="password">
-        </div>
-        <button type="submit">se connecter</button>
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:block; font-size:13px; font-weight:500; color:#444; margin-bottom:6px;">Mot de passe</label>
+        <input type="password" name="password" placeholder="Entrez votre mot de passe"
+          style="width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:14px; box-sizing:border-box; outline:none;">
+      </div>
+
+      <button type="submit"
+        style="width:100%; padding:11px; background:#3C3489; color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:500; cursor:pointer;">
+        Se connecter
+      </button>
     </form>
-</body>
-</html>
+
+  </div>
+</div>
+
+{% endblock content %}
